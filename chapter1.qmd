@@ -4,21 +4,21 @@ In this chapter we will learn descriptive statistics.
 
 ## Measures of central tendency
 
-**Measures of Central Tendency** are statistical values that represent the *center* or *typical value* of a data set. They help us understand the overall trend or “average” behavior of the data.
+Measures of Central Tendency are statistical values that represent the *center* or *typical value* of a data set. They help us understand the overall trend or “average” behavior of the data.
 
-### Mode
+### Mode in R
 
-The **mode** is the value(s) that appear **most frequently** in the dataset.
+The mode is the value(s) that appear most frequently in the dataset.
 
-In R, the **`lsr`** package provides a simple and clean way to calculate the **mode**.
+In R, the `lsr` package provides a simple and clean way to calculate the mode.
 
-**Step 1:** Install the `lsr` Package
+Step 1: Install the `lsr` Package
 
 ```{r}
 install.packages("lsr")
 ```
 
-**Step 2:** Load the Package
+Step 2: Load the Package
 
 ```{r}
 library(lsr)
@@ -31,11 +31,11 @@ data <- c(1, 2, 2, 3, 3, 3, 4, 5)
 modeOf(data)
 ```
 
-**⚠️ Important Note**
+⚠️ Important Note
 
-There is a **base R function** also named `mode()` — **but** it returns the **data type** (like `"numeric"`, `"character"`) instead of calculating the statistical mode!
+There is a base R function also named `mode()` — but it returns the data type (like `"numeric"`, `"character"`) instead of calculating the statistical mode!
 
-**Mode in Data Frame**
+Mode in Data Frame
 
 ```{r}
 df <- data.frame(
@@ -48,3 +48,26 @@ sapply(df, modeOf)
 ```
 
 The `sapply()` function is executed on each column of the dataframe.
+
+### Mode in Python
+
+Calculating the Mode in Python Using `pandas`
+
+Step 1: Import `pandas`
+
+```{python}
+import pandas as pd
+```
+
+**Step 2:** Create a Sample DataFrame
+
+```{python}
+data = {
+    "Name": ["Alice", "Bob", "Charlie", "Diana", "Eli", "Fiona"],
+    "Age": [24, 30, 22, 24, 30, 24],
+    "Gender": ["Female", "Male", "Male", "Female", "Male", "Female"]
+}
+
+df = pd.DataFrame(data)
+df
+```
