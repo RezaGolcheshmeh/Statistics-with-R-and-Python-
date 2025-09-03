@@ -3,7 +3,7 @@
     "path": "/cloud/project/chapter2.qmd",
     "project_path": "chapter2.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "2842089880",
     "contents": "",
     "dirty": false,
     "created": 1756913755853.0,
@@ -22,11 +22,11 @@
         "rmdVisualCollapsedChunks": ""
     },
     "folds": "",
-    "lastKnownWriteTime": 1756922168,
+    "lastKnownWriteTime": 1756923564,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1756922168615,
+    "last_content_update": 1756923564292,
     "read_only": false,
     "read_only_alternatives": []
 }

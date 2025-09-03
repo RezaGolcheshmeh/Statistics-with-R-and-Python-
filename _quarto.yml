@@ -4,7 +4,7 @@ project:
 
 book:
   title: "Statistics with R and Python"
-  author: "Reza Gol "
+  author: "Reza Golcheshmeh "
   chapters:
     - index.qmd
     - chapter1.qmd
