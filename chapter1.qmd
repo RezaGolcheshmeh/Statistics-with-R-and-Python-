@@ -1,3 +1,20 @@
 # chapter1: Descriptive statistics
 
 In this chapter we will learn descriptive statistics.
+
+## Measures of central tendency
+
+**Measures of Central Tendency** are statistical values that represent the *center* or *typical value* of a data set.
+They help us understand the overall trend or “average” behavior of the data.
+
+### Mode
+
+The **mode** is the value(s) that appear **most frequently** in the dataset.
+
+In R, the **`lsr`** package provides a simple and clean way to calculate the **mode**.
+
+**Step 1**: Install the `lsr` Package
+
+```{r}
+install.packages("lsr")
+```
