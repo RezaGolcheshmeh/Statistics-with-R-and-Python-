@@ -12,8 +12,25 @@ The **mode** is the value(s) that appear **most frequently** in the dataset.
 
 In R, the **`lsr`** package provides a simple and clean way to calculate the **mode**.
 
-**Step 1**: Install the `lsr` Package
+**Step 1:** Install the `lsr` Package
 
 ```{r}
 install.packages("lsr")
 ```
+
+**Step 2:** Load the Package
+
+```{r}
+library(lsr)
+```
+
+Example
+
+```{r}
+data <- c(1, 2, 2, 3, 3, 3, 4, 5)
+modeOf(data)
+```
+
+**⚠️ Important Note**
+
+There is a **base R function** also named `mode()` — **but** it returns the **data type** (like `"numeric"`, `"character"`) instead of calculating the statistical mode!

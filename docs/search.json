@@ -14,7 +14,7 @@
     "href": "chapter1.html",
     "title": "2  chapter1: Descriptive statistics",
     "section": "",
-    "text": "In this chapter we will learn descriptive statistics.",
+    "text": "2.1 Measures of central tendency\nIn this chapter we will learn descriptive statistics.\nMeasures of Central Tendency are statistical values that represent the center or typical value of a data set. They help us understand the overall trend or “average” behavior of the data.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>chapter1: Descriptive statistics</span>"
     ]
@@ -27,6 +27,16 @@
     "text": "Drawing graphs",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>chapter2: Drawing graphs</span>"
+    ]
+  },
+  {
+    "objectID": "chapter1.html#measures-of-central-tendency",
+    "href": "chapter1.html#measures-of-central-tendency",
+    "title": "2  chapter1: Descriptive statistics",
+    "section": "",
+    "text": "2.1.1 Mode\nThe mode is the value(s) that appear most frequently in the dataset.\nIn R, the lsr package provides a simple and clean way to calculate the mode.\nStep 1: Install the lsr Package\n\ninstall.packages(\"lsr\")\n\nInstalling package into '/cloud/lib/x86_64-pc-linux-gnu-library/4.5'\n(as 'lib' is unspecified)\n\n\nStep 2: Load the Package\n\nlibrary(lsr)\n\nExample\n\ndata &lt;- c(1, 2, 2, 3, 3, 3, 4, 5)\nmodeOf(data)\n\n[1] 3\n\n\n⚠️ Important Note\nThere is a base R function also named mode() — but it returns the data type (like \"numeric\", \"character\") instead of calculating the statistical mode!",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>chapter1: Descriptive statistics</span>"
     ]
   }
 ]
