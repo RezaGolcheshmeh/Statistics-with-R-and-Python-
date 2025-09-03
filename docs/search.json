@@ -1,0 +1,22 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Statistics with R and Python",
+    "section": "",
+    "text": "1 مقدمه\nبه اولین کتاب Quarto خوش اومدی 😎✍️",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics with R and Python</span>"
+    ]
+  },
+  {
+    "objectID": "chapter1.html",
+    "href": "chapter1.html",
+    "title": "2  chapter1: Descriptive statistics",
+    "section": "",
+    "text": "In this chapter we will learn descriptive statistics.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>chapter1: Descriptive statistics</span>"
+    ]
+  }
+]

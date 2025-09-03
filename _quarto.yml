@@ -1,0 +1,16 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Statistics with R and Python"
+  author: "Reza Gol "
+  chapters:
+    - index.qmd
+    - chapter1.qmd
+    - chapter2.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
