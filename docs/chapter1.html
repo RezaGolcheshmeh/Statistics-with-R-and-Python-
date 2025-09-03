@@ -172,7 +172,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#measures-of-central-tendency" id="toc-measures-of-central-tendency" class="nav-link active" data-scroll-target="#measures-of-central-tendency"><span class="header-section-number">2.1</span> Measures of central tendency</a>
   <ul class="collapse">
-  <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode"><span class="header-section-number">2.1.1</span> Mode</a></li>
+  <li><a href="#mode-in-r" id="toc-mode-in-r" class="nav-link" data-scroll-target="#mode-in-r"><span class="header-section-number">2.1.1</span> Mode in R</a></li>
+  <li><a href="#mode-in-python" id="toc-mode-in-python" class="nav-link" data-scroll-target="#mode-in-python"><span class="header-section-number">2.1.2</span> Mode in Python</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,12 +203,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this chapter we will learn descriptive statistics.</p>
 <section id="measures-of-central-tendency" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="measures-of-central-tendency"><span class="header-section-number">2.1</span> Measures of central tendency</h2>
-<p><strong>Measures of Central Tendency</strong> are statistical values that represent the <em>center</em> or <em>typical value</em> of a data set. They help us understand the overall trend or “average” behavior of the data.</p>
-<section id="mode" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="mode"><span class="header-section-number">2.1.1</span> Mode</h3>
-<p>The <strong>mode</strong> is the value(s) that appear <strong>most frequently</strong> in the dataset.</p>
-<p>In R, the <strong><code>lsr</code></strong> package provides a simple and clean way to calculate the <strong>mode</strong>.</p>
-<p><strong>Step 1:</strong> Install the <code>lsr</code> Package</p>
+<p>Measures of Central Tendency are statistical values that represent the <em>center</em> or <em>typical value</em> of a data set. They help us understand the overall trend or “average” behavior of the data.</p>
+<section id="mode-in-r" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="mode-in-r"><span class="header-section-number">2.1.1</span> Mode in R</h3>
+<p>The mode is the value(s) that appear most frequently in the dataset.</p>
+<p>In R, the <code>lsr</code> package provides a simple and clean way to calculate the mode.</p>
+<p>Step 1: Install the <code>lsr</code> Package</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"lsr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -215,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 (as 'lib' is unspecified)</code></pre>
 </div>
 </div>
-<p><strong>Step 2:</strong> Load the Package</p>
+<p>Step 2: Load the Package</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -227,9 +228,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-<p><strong>⚠️ Important Note</strong></p>
-<p>There is a <strong>base R function</strong> also named <code>mode()</code> — <strong>but</strong> it returns the <strong>data type</strong> (like <code>"numeric"</code>, <code>"character"</code>) instead of calculating the statistical mode!</p>
-<p><strong>Mode in Data Frame</strong></p>
+<p>⚠️ Important Note</p>
+<p>There is a base R function also named <code>mode()</code> — but it returns the data type (like <code>"numeric"</code>, <code>"character"</code>) instead of calculating the statistical mode!</p>
+<p>Mode in Data Frame</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="cn">NA</span>),</span>
@@ -245,6 +246,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The <code>sapply()</code> function is executed on each column of the dataframe.</p>
+</section>
+<section id="mode-in-python" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="mode-in-python"><span class="header-section-number">2.1.2</span> Mode in Python</h3>
+<p>Calculating the Mode in Python Using <code>pandas</code></p>
+<p>Step 1: Import <code>pandas</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Step 2:</strong> Create a Sample DataFrame</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Name"</span>: [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>, <span class="st">"Diana"</span>, <span class="st">"Eli"</span>, <span class="st">"Fiona"</span>],</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Age"</span>: [<span class="dv">24</span>, <span class="dv">30</span>, <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">30</span>, <span class="dv">24</span>],</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gender"</span>: [<span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Name  Age  Gender
+0    Alice   24  Female
+1      Bob   30    Male
+2  Charlie   22    Male
+3    Diana   24  Female
+4      Eli   30    Male
+5    Fiona   24  Female</code></pre>
+</div>
+</div>
 
 
 </section>
