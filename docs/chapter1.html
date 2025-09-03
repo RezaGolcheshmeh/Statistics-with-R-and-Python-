@@ -274,6 +274,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5    Fiona   24  Female</code></pre>
 </div>
 </div>
+<p><strong>Step 3: Use <code>.mode()</code> to Find the Mode</strong></p>
+<p>Mode of the <code>"Age"</code> column:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Age"</span>].mode()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    24
+Name: Age, dtype: int64</code></pre>
+</div>
+</div>
+<p><strong>Mode for All Columns:</strong></p>
+<p>You can get the mode for <strong>all columns</strong> like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df.mode()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Name   Age  Gender
+0    Alice  24.0  Female
+1      Bob   NaN    Male
+2  Charlie   NaN     NaN
+3    Diana   NaN     NaN
+4      Eli   NaN     NaN
+5    Fiona   NaN     NaN</code></pre>
+</div>
+</div>
 
 
 </section>

@@ -71,3 +71,19 @@ data = {
 df = pd.DataFrame(data)
 df
 ```
+
+**Step 3: Use `.mode()` to Find the Mode**
+
+Mode of the `"Age"` column:
+
+```{python}
+df["Age"].mode()
+```
+
+**Mode for All Columns:**
+
+You can get the mode for **all columns** like this:
+
+```{python}
+df.mode()
+```
