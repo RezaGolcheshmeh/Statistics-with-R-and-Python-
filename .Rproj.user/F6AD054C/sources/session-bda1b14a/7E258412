@@ -3,7 +3,7 @@
     "path": "/cloud/project/chapter2.qmd",
     "project_path": "chapter2.qmd",
     "type": "quarto_markdown",
-    "hash": "2842089880",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1756913755853.0,
@@ -16,7 +16,7 @@
         "cursorPosition": "0,0",
         "scrollLine": "0",
         "rmdVisualMode": "true",
-        "rmdVisualModeLocation": "34:0",
+        "rmdVisualModeLocation": "2:0",
         "rmdVisualWrapConfigured": "true",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": ""
