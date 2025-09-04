@@ -12,19 +12,14 @@ The mode is the value(s) that appear most frequently in the dataset.
 
 In R, the `lsr` package provides a simple and clean way to calculate the mode.
 
-Step 1: Install the `lsr` Package
+Step 1: Install and Load the `lsr` Package
 
 ```{r}
 install.packages("lsr")
-```
-
-Step 2: Load the Package
-
-```{r}
 library(lsr)
 ```
 
-Example
+**Example:**
 
 ```{r}
 data <- c(1, 2, 2, 3, 3, 3, 4, 5)
@@ -35,7 +30,7 @@ modeOf(data)
 
 There is a base R function also named `mode()` — but it returns the data type (like `"numeric"`, `"character"`) instead of calculating the statistical mode!
 
-Mode in Data Frame
+**Example: Mode in Data Frame**
 
 ```{r}
 df <- data.frame(
@@ -53,7 +48,7 @@ The `sapply()` function is executed on each column of the dataframe.
 
 Calculating the Mode in Python Using `pandas`
 
-Step 1: Import `pandas`
+**Step 1:** Import `pandas`
 
 ```{python}
 import pandas as pd
