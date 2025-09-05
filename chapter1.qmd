@@ -125,3 +125,60 @@ y <- c(5, 8, NA, 12)
 median(y, na.rm =TRUE)
 
 ```
+
+**Using `tapply` with categorical variables in R**
+
+`tapply` lets you apply a function (like `median`) to subsets of a vector, defined by a categorical variable (factor).
+
+```{r}
+Age <- c(24, 30, 22, 24, 30, 24)
+Gender <- c("F", "M", "M", "F", "M", "F")
+
+tapply(Age, Gender, median)
+```
+
+**Explanation:**
+
+-    **First argument** → numeric vector (`Age`)
+
+-   **Second argument** → categorical variable (`Gender`)
+
+-   **Third argument** → function to apply (`median`)
+
+So this gives you the median age for each gender.
+
+Example : DataFrame
+
+```{r}
+data <- data.frame(
+  Gender = c("f", "f", "m", "m", "f", "m"),
+  Anxiety = c(12, 15, NA, 20, 18, 25),
+  Depression = c(30, NA, 28, 35, 40, NA)
+)
+
+data
+```
+
+**Use** `sapply , lapply`
+
+```{r}
+sapply(data[, c("Anxiety","Depression")], median, na.rm = TRUE)  #1
+#or
+sapply(data[sapply(data, is.numeric)], median, na.rm = TRUE)     #2
+
+#or
+lapply(data[, c("Anxiety","Depression")], median, na.rm = TRUE)  #3
+```
+
+**Use** `tapply`
+
+```{r}
+tapply(data$Anxiety, data$Gender, median, na.rm = TRUE)
+tapply(data$Depression, data$Gender, median, na.rm = TRUE)
+```
+
+**Use** aggregate
+
+```{r}
+aggregate(cbind(Anxiety, Depression) ~ Gender, data = data, median,na.rm = TRUE)
+```

@@ -340,6 +340,89 @@ Name: Age, dtype: int64</code></pre>
 <pre><code>[1] 8</code></pre>
 </div>
 </div>
+<p><strong>Using <code>tapply</code> with categorical variables in R</strong></p>
+<p><code>tapply</code> lets you apply a function (like <code>median</code>) to subsets of a vector, defined by a categorical variable (factor).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">30</span>, <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">30</span>, <span class="dv">24</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>Gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"F"</span>, <span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(Age, Gender, median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> F  M 
+24 30 </code></pre>
+</div>
+</div>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><p><strong>First argument</strong> → numeric vector (<code>Age</code>)</p></li>
+<li><p><strong>Second argument</strong> → categorical variable (<code>Gender</code>)</p></li>
+<li><p><strong>Third argument</strong> → function to apply (<code>median</code>)</p></li>
+</ul>
+<p>So this gives you the median age for each gender.</p>
+<p>Example : DataFrame</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Gender =</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"m"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"m"</span>),</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Anxiety =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="cn">NA</span>, <span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">25</span>),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Depression =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="cn">NA</span>, <span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="cn">NA</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Gender Anxiety Depression
+1      f      12         30
+2      f      15         NA
+3      m      NA         28
+4      m      20         35
+5      f      18         40
+6      m      25         NA</code></pre>
+</div>
+</div>
+<p><strong>Use</strong> <code>sapply , lapply</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(data[, <span class="fu">c</span>(<span class="st">"Anxiety"</span>,<span class="st">"Depression"</span>)], median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co">#1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Anxiety Depression 
+      18.0       32.5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(data[<span class="fu">sapply</span>(data, is.numeric)], median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)     <span class="co">#2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Anxiety Depression 
+      18.0       32.5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(data[, <span class="fu">c</span>(<span class="st">"Anxiety"</span>,<span class="st">"Depression"</span>)], median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co">#3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$Anxiety
+[1] 18
+
+$Depression
+[1] 32.5</code></pre>
+</div>
+</div>
+<p><strong>Use</strong> <code>tapply</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(data<span class="sc">$</span>Anxiety, data<span class="sc">$</span>Gender, median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   f    m 
+15.0 22.5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(data<span class="sc">$</span>Depression, data<span class="sc">$</span>Gender, median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   f    m 
+35.0 31.5 </code></pre>
+</div>
+</div>
+<p><strong>Use</strong> aggregate</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(Anxiety, Depression) <span class="sc">~</span> Gender, <span class="at">data =</span> data, median,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Gender Anxiety Depression
+1      f      15         35
+2      m      20         35</code></pre>
+</div>
+</div>
 
 
 </section>
