@@ -102,3 +102,26 @@ Mode of the `"Age"` column:
 ```{python}
 df["Age"].mode()
 ```
+
+### Median in R
+
+The **median** is the middle value of a dataset when the numbers are sorted in order.
+
+-   If the number of values is **odd**, it’s the middle one.
+
+-   If it’s **even**, it’s the average of the two middle numbers.
+
+Basic `median()` function.
+
+```{r}
+x <- c(10, 20, 30, 40, 50)
+median(x)
+```
+
+With missing values (`NA`) we can use `na.rm = TRUE`
+
+```{r}
+y <- c(5, 8, NA, 12)
+median(y, na.rm =TRUE)
+
+```
