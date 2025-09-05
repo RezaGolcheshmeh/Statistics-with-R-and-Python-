@@ -8,7 +8,7 @@ Measures of Central Tendency are statistical values that represent the *center* 
 
 ### Mode in R
 
-The mode is the value(s) that appear most frequently in the dataset.
+The mode is the value(s) that appear most frequently in the data set.
 
 In R, the `lsr` package provides a simple and clean way to calculate the mode.
 
@@ -48,13 +48,43 @@ The `sapply()` function is executed on each column of the dataframe.
 
 Calculating the Mode in Python Using `pandas`
 
-**Step 1:** Import `pandas`
+**Use `.mode()` to Find the Mode**
+
+**Exaple 1:**
 
 ```{python}
 import pandas as pd
+
+data = pd.Series([1, 2, 2, 3, 4, 4, 5])
+mod = data.mode()
+print("Mode:", mod.tolist())
+
+#or
+
+print (mod)
+
 ```
 
-**Step 2:** Create a Sample DataFrame
+**Example 2:** Create a Sample Data Frame.
+
+Mode for All Columns:
+
+```{python}
+data = {
+    'A': [1, 2, 2, 3, 4],
+    'B': [5, 5, 6, 7, 7],
+    'C': [10, 10, 10, 11, 12]
+}
+
+df = pd.DataFrame(data)
+
+mode_values = df.mode()
+print(mode_values)
+```
+
+**Example 3:**
+
+Mode for All Columns:
 
 ```{python}
 data = {
@@ -67,18 +97,8 @@ df = pd.DataFrame(data)
 df
 ```
 
-**Step 3: Use `.mode()` to Find the Mode**
-
 Mode of the `"Age"` column:
 
 ```{python}
 df["Age"].mode()
-```
-
-**Mode for All Columns:**
-
-You can get the mode for **all columns** like this:
-
-```{python}
-df.mode()
 ```
