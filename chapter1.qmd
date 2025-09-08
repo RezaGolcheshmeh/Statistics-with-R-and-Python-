@@ -1,12 +1,10 @@
-# chapter1: Descriptive statistics
+# chapter1: Measures of central tendency
 
 In this chapter we will learn descriptive statistics.
 
-## Measures of central tendency
+**Measures of Central Tendency** are statistical values that represent the *center* or *typical value* of a data set. They help us understand the overall trend or “average” behavior of the data.
 
-Measures of Central Tendency are statistical values that represent the *center* or *typical value* of a data set. They help us understand the overall trend or “average” behavior of the data.
-
-### Mode in R
+## Mode in R
 
 The mode is the value(s) that appear most frequently in the data set.
 
@@ -44,7 +42,7 @@ sapply(df, modeOf)
 
 The `sapply()` function is executed on each column of the dataframe.
 
-### Mode in Python
+## Mode in Python
 
 Calculating the Mode in Python Using `pandas`
 
@@ -103,7 +101,7 @@ Mode of the `"Age"` column:
 df["Age"].mode()
 ```
 
-### Median in R
+## Median in R
 
 The **median** is the middle value of a dataset when the numbers are sorted in order.
 
@@ -183,7 +181,7 @@ tapply(data$Depression, data$Gender, median, na.rm = TRUE)
 aggregate(cbind(Anxiety, Depression) ~ Gender, data = data, median,na.rm = TRUE)
 ```
 
-### Median in Python
+## Median in Python
 
 **1.**Using the `statistics` library
 
