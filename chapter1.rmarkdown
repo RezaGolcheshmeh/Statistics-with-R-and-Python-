@@ -450,3 +450,5 @@ mean(numbers, trim = 0.2)
 
 -   **Data analysis:** In data that has noise or measurement error.
 
+## Mean in Python
+

@@ -726,6 +726,31 @@ $Depression
 </section>
 <section id="trimmed-mean-in-r" class="level3" data-number="2.5.4">
 <h3 data-number="2.5.4" class="anchored" data-anchor-id="trimmed-mean-in-r"><span class="header-section-number">2.5.4</span> <strong>Trimmed Mean in R</strong></h3>
+<p>The Trimmed Mean is a version of the arithmetic mean in which a percentage of the smallest and largest data values ​​are removed to reduce the effect of outliers.</p>
+<p>if the data contains very large or very small values, the arithmetic mean can be misleading. In these situations, we use the trimmed mean.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22.8</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(numbers, <span class="at">trim =</span> <span class="fl">0.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<ul>
+<li><p>The trim value is chosen between 0 and 0.5.</p></li>
+<li><p>For example, trim=0.1 means that 10% of the data is removed from the beginning and 10% from the end.</p></li>
+<li><p>Before calculation, the data is sorted in ascending order.</p></li>
+</ul>
+<p><strong>Application</strong></p>
+<ul>
+<li><p><strong>Social sciences:</strong> In questionnaires when some responses are very unusual.</p></li>
+<li><p><strong>Economics:</strong> In calculating indices when there are outliers.</p></li>
+<li><p><strong>Data analysis:</strong> In data that has noise or measurement error.</p></li>
+</ul>
 
 
 </section>
