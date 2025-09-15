@@ -181,6 +181,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#arithmetic-mean-in-r" id="toc-arithmetic-mean-in-r" class="nav-link" data-scroll-target="#arithmetic-mean-in-r"><span class="header-section-number">2.5.1</span> <strong>Arithmetic Mean in R</strong></a></li>
   <li><a href="#geometric-mean-in-r" id="toc-geometric-mean-in-r" class="nav-link" data-scroll-target="#geometric-mean-in-r"><span class="header-section-number">2.5.2</span> <strong>Geometric Mean in R</strong></a></li>
+  <li><a href="#harmonic-mean-in-r" id="toc-harmonic-mean-in-r" class="nav-link" data-scroll-target="#harmonic-mean-in-r"><span class="header-section-number">2.5.3</span> <strong>Harmonic Mean in R</strong></a></li>
+  <li><a href="#trimmed-mean-in-r" id="toc-trimmed-mean-in-r" class="nav-link" data-scroll-target="#trimmed-mean-in-r"><span class="header-section-number">2.5.4</span> <strong>Trimmed Mean in R</strong></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -678,6 +680,52 @@ $Depression
 <li><p><strong>Medical science</strong>: mean increase in bacterial population .</p></li>
 <li><p><strong>Management:</strong> mean annual sales growth percentage.</p></li>
 </ul>
+</section>
+<section id="harmonic-mean-in-r" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="harmonic-mean-in-r"><span class="header-section-number">2.5.3</span> <strong>Harmonic Mean in R</strong></h3>
+<p>Harmonic mean is most often used in situations where the data is a ratio or rate (such as speed, productivity, or growth rate).</p>
+<p><strong>Method 1: Using the <code>psych</code> package</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"psych"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Installing package into '/cloud/lib/x86_64-pc-linux-gnu-library/4.5'
+(as 'lib' is unspecified)</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">16</span>)</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="fu">harmonic.mean</span>(numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.266667</code></pre>
+</div>
+</div>
+<p><strong>Method 2: Using a formula (without a package)</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">16</span>)</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>hm <span class="ot">&lt;-</span> <span class="fu">length</span>(numbers) <span class="sc">/</span> <span class="fu">sum</span>(<span class="dv">1</span> <span class="sc">/</span> numbers)</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.266667</code></pre>
+</div>
+</div>
+<p><strong>Application of harmonic mean:</strong></p>
+<ul>
+<li><p><strong>Physics:</strong> Calculating the average speed when the same distance is traveled at different speeds.</p></li>
+<li><p><strong>Economics:</strong> Average interest rates or investment returns.</p></li>
+<li><p><strong>Management:</strong> Average productivity indicators in an organization.</p></li>
+</ul>
+<p><strong>Important</strong></p>
+<ul>
+<li><p>The data must be positive.</p></li>
+<li><p>If the data contains zero or negative values, the harmonic mean is not defined.</p></li>
+<li><p>For data with NA, you must use <code>na.rm=TRUE</code></p></li>
+</ul>
+</section>
+<section id="trimmed-mean-in-r" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="trimmed-mean-in-r"><span class="header-section-number">2.5.4</span> <strong>Trimmed Mean in R</strong></h3>
 
 
 </section>

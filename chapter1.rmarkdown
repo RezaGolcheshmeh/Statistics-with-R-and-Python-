@@ -449,3 +449,4 @@ mean(numbers, trim = 0.2)
 -   **Economics:** In calculating indices when there are outliers.
 
 -   **Data analysis:** In data that has noise or measurement error.
+

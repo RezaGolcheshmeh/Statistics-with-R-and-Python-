@@ -378,3 +378,74 @@ print(gm)
 -   **Medical science**: mean increase in bacterial population .
 
 -   **Management:** mean annual sales growth percentage.
+
+### **Harmonic Mean in R**
+
+Harmonic mean is most often used in situations where the data is a ratio or rate (such as speed, productivity, or growth rate).
+
+**Method 1: Using the `psych` package**
+
+```{r}
+
+install.packages("psych")
+
+library(psych)
+
+numbers <- c(2, 4, 8, 16)
+
+harmonic.mean(numbers)
+```
+
+**Method 2: Using a formula (without a package)**
+
+```{r}
+numbers <- c(2, 4, 8, 16)
+
+hm <- length(numbers) / sum(1 / numbers)
+
+print(hm)
+```
+
+**Application of harmonic mean:**
+
+-   **Physics:** Calculating the average speed when the same distance is traveled at different speeds.
+
+-   **Economics:** Average interest rates or investment returns.
+
+-   **Management:** Average productivity indicators in an organization.
+
+**Important**
+
+-   The data must be positive.
+
+-   If the data contains zero or negative values, the harmonic mean is not defined.
+
+-   For data with NA, you must use `na.rm=TRUE`
+
+### **Trimmed Mean in R**
+
+The Trimmed Mean is a version of the arithmetic mean in which a percentage of the smallest and largest data values ​​are removed to reduce the effect of outliers.
+
+if the data contains very large or very small values, the arithmetic mean can be misleading. In these situations, we use the trimmed mean.
+
+```{r}
+numbers <- c(2, 3, 4, 5, 100)
+
+mean(numbers)
+
+mean(numbers, trim = 0.2)
+```
+
+-   The trim value is chosen between 0 and 0.5.
+
+-   For example, trim=0.1 means that 10% of the data is removed from the beginning and 10% from the end.
+
+-   Before calculation, the data is sorted in ascending order.
+
+**Application**
+
+-   **Social sciences:** In questionnaires when some responses are very unusual.
+
+-   **Economics:** In calculating indices when there are outliers.
+
+-   **Data analysis:** In data that has noise or measurement error.
