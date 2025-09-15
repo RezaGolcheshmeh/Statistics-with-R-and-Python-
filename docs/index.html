@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.29">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Reza Golcheshmeh">
-<meta name="dcterms.date" content="2025-09-08">
+<meta name="dcterms.date" content="2025-09-15">
 
 <title>Statistics with R and Python</title>
 <style>
@@ -35,14 +35,15 @@ ul.task-list li input[type="checkbox"] {
 <link href="./chapter1.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e47ea7ee033fc977767491f480ed9013.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-70896287326667430c62020e2b71b712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -96,7 +97,9 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistics with R and Python</a> 
     </div>
@@ -123,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">chapter2: Drawing graphs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">chapter2: Measures of variability</span></span></a>
   </div>
 </li>
     </ul>
@@ -141,6 +144,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="header-section-number">1.1</span> Descriptive statistics</a>
   <ul class="collapse">
   <li><a href="#chapter1-measures-of-central-tendency" id="toc-chapter1-measures-of-central-tendency" class="nav-link" data-scroll-target="#chapter1-measures-of-central-tendency"><span class="header-section-number">1.1.1</span> chapter1: Measures of central tendency</a></li>
+  <li><a href="#chapter2-measures-of-variability" id="toc-chapter2-measures-of-variability" class="nav-link" data-scroll-target="#chapter2-measures-of-variability"><span class="header-section-number">1.1.2</span> chapter2: Measures of variability</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -168,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 8, 2025</p>
+      <p class="date">September 15, 2025</p>
     </div>
   </div>
   
@@ -187,6 +191,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="1.1" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">1.1</span> Descriptive statistics</h2>
 <section id="chapter1-measures-of-central-tendency" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="chapter1-measures-of-central-tendency"><span class="header-section-number">1.1.1</span> chapter1: Measures of central tendency</h3>
+</section>
+<section id="chapter2-measures-of-variability" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="chapter2-measures-of-variability"><span class="header-section-number">1.1.2</span> chapter2: Measures of variability</h3>
 
 
 </section>
@@ -245,13 +252,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

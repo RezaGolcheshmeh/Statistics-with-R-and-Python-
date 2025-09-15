@@ -12,3 +12,5 @@ This book is designed for **psychology students** to become familiar with statis
 ## Descriptive statistics
 
 ### chapter1: Measures of central tendency
+
+### chapter2: Measures of variability
