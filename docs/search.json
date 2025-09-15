@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Statistics with R and Python",
     "section": "",
-    "text": "1 Introduction\nThis book is designed for psychology students to become familiar with statistical concepts in the R and Python programming languages.",
+    "text": "0.1 Descriptive statistics\nIntroduction\nThis book is designed for psychology students to become familiar with statistical concepts in the R and Python programming languages.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics with R and Python</span>"
     ]
@@ -83,8 +83,8 @@
     "objectID": "index.html#descriptive-statistics",
     "href": "index.html#descriptive-statistics",
     "title": "Statistics with R and Python",
-    "section": "1.1 Descriptive statistics",
-    "text": "1.1 Descriptive statistics\n\n1.1.1 chapter1: Measures of central tendency\n\n\n1.1.2 chapter2: Measures of variability",
+    "section": "",
+    "text": "0.1.1 chapter1: Measures of central tendency\n\n\n0.1.2 chapter2: Measures of variability",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics with R and Python</span>"
     ]

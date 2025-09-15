@@ -5,7 +5,7 @@ date: today
 format: html
 ---
 
-# Introduction
+**Introduction**
 
 This book is designed for **psychology students** to become familiar with statistical concepts in the `R` and `Python` programming languages.
 
