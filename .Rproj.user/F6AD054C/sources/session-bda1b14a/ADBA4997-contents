@@ -451,3 +451,244 @@ mean(numbers, trim = 0.2)
 -   **Data analysis:** In data that has noise or measurement error.
 
 ## Mean in Python
+
+### **Arithmetic Mean in Python**
+
+**Method 1:** Using **`statistics.mean`**
+
+```{python}
+import statistics
+
+numbers = [10, 20, 30, 40, 50]
+mean_value = statistics.mean(numbers)
+
+print("Mean:", mean_value)
+```
+
+**Method 2:** Using **`NumPy`**
+
+```{python}
+import numpy as np
+
+numbers = [10, 20, 30, 40, 50]
+mean_value = np.mean(numbers)
+
+print("Mean:", mean_value)
+```
+
+-   **If the data is small:** use `statistics.mean`
+
+-   **If the data is large or a matrix:** use `numpy.mean.`
+
+**Method 3:** Using **`Pandas`**
+
+**Example 1:** Calculating the mean of a column
+
+```{python}
+import pandas as pd
+
+data = {
+  "Name":["Sevda", "MG", "Reza", "RG"],
+   "Math":[20, 12, 18, 15],
+   "Statistics": [17, 16, 19, 14]
+}
+
+df = pd.DataFrame(data)
+
+mean_math = df["Math"].mean()
+
+print("Math:", mean_math)
+```
+
+**Example 2:** Calculating the mean of all columns
+
+```{python}
+means = df.mean(numeric_only=True)
+print(means)
+```
+
+**Example 3:** Calculating the mean of each row
+
+```{python}
+df["Individual Mean"] = df.mean(numeric_only=True, axis=1)
+
+print(df)
+```
+
+**Mean with NaN**
+
+1.  **Using Pandas** The Pandas library ignores `NaN` values ​​by default in its statistical functions.
+
+```{python}
+import pandas as pd
+import numpy as np
+
+
+data = {
+  "Name":["Sevda", "MG", "Reza", "RG"],
+   "Math":[20, 12, np.nan, 15],
+   "Statistics": [17, 16, 19, np.nan]
+}
+
+df = pd.DataFrame(data)
+
+mean_math = df["Math"].mean()
+mean_Statistics = df["Statistics"].mean()
+
+
+print("Math:", mean_math)
+print("Statistics:", mean_Statistics)
+
+```
+
+```{python}
+means = df.mean(numeric_only=True)
+print(means)
+
+```
+
+1.  **Using `NumPy`** with `np.nanmean()`
+
+```{python}
+import numpy as np
+
+numbers = [10, 20, np.nan, 30, 40]
+
+mean_value = np.nanmean(numbers)
+
+print(" Mean:", mean_value)
+```
+
+**Example:** DataFrame (numeric + categorical)
+
+```{python}
+import pandas as pd
+import numpy as np
+
+data = {
+    "Name":["Sevda", "MG", "Reza", "RG", "SG"],
+    "Class":["A", "B", "C", "A", "C"],
+    "Math":[12, 18, 15, np.nan, 20],
+    "physics": [17, 16, 19, 14, np.nan],
+    "Psychology": [np.nan, 18, 13, 15, 19]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+```
+
+1.  Mean of all numeric columns
+
+```{python}
+means = df.mean(numeric_only=True)
+print(means)
+```
+
+2.  Mean of each row (for each student)
+
+```{python}
+df["Individual Mean"] = df.mean(numeric_only=True, axis=1)
+
+print(df)
+```
+
+3.  Calculate the group mean (based on categorical column)
+
+```{python}
+group_means = df.groupby("Class").mean(numeric_only=True)
+print(group_means)
+```
+
+### **Geometric Mean in Python**
+
+1.  Using `statistics.geometric_mean` (Python 3.8 and later)
+
+```{python}
+import statistics
+
+numbers = [2, 8, 4]
+
+gm = statistics.geometric_mean(numbers)
+
+print("geometric_mean:", gm)
+```
+
+2.  Using **SciPy** :`scipy.stats.gmean`
+
+```{python}
+from scipy.stats import gmean
+
+numbers = [2, 8, 4]
+
+gm = gmean(numbers)
+
+print("gmean:", gm)
+```
+
+```         
+gmean: 4.0
+```
+
+**If a number is zero:** the total geometric mean is zero.
+
+-   **If a number is negative:** the geometric mean is not defined (except in special cases).
+
+### Harmonic Mean **in Python**
+
+1.  **Using** **`statistics.harmonic_mean`** (Python 3.6 and later)
+
+```{python}
+import statistics
+
+numbers = [2, 4, 4]
+
+hm = statistics.harmonic_mean(numbers)
+
+print("hm :", hm)
+```
+
+2.  Using **SciPy** :`scipy.stats.hmean`
+
+```{python}
+from scipy.stats import hmean
+
+numbers = [2, 4, 4]
+
+hm = hmean(numbers)
+
+print("hmean:", hm)
+
+```
+
+```         
+hmean: 3.0
+```
+
+-   All data must be positive. If a value is zero or negative, the harmonic mean is not defined.
+
+-   The main application is in rates (such as average speed over equal distances).
+
+### Trimmed Mean in Python
+
+The trimmed mean is the same as the regular mean, except that some of the largest and smallest data (for example, the top 10% and bottom 10%) are removed and then the mean is taken.
+
+1.  Using **SciPy** (`scipy.stats.trim_mean`)
+
+```{python}
+from scipy.stats import trim_mean
+
+numbers = [1, 2, 2, 3, 4, 100]
+
+tm = trim_mean(numbers, 0.1)
+
+print("tm :", tm)
+```
+
+```{python}
+tm : 18.66
+```
+
+-   **trim_mean(data, 0.1)** : Remove 10% of the data from the beginning and end
+
+-   **trim_mean(data, 0.2)** : Remove 20% of the data

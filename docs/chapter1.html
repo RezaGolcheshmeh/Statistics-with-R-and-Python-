@@ -184,6 +184,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#harmonic-mean-in-r" id="toc-harmonic-mean-in-r" class="nav-link" data-scroll-target="#harmonic-mean-in-r"><span class="header-section-number">2.5.3</span> <strong>Harmonic Mean in R</strong></a></li>
   <li><a href="#trimmed-mean-in-r" id="toc-trimmed-mean-in-r" class="nav-link" data-scroll-target="#trimmed-mean-in-r"><span class="header-section-number">2.5.4</span> <strong>Trimmed Mean in R</strong></a></li>
   </ul></li>
+  <li><a href="#mean-in-python" id="toc-mean-in-python" class="nav-link" data-scroll-target="#mean-in-python"><span class="header-section-number">2.6</span> Mean in Python</a>
+  <ul class="collapse">
+  <li><a href="#arithmetic-mean-in-python" id="toc-arithmetic-mean-in-python" class="nav-link" data-scroll-target="#arithmetic-mean-in-python"><span class="header-section-number">2.6.1</span> <strong>Arithmetic Mean in Python</strong></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -751,6 +755,205 @@ $Depression
 <li><p><strong>Economics:</strong> In calculating indices when there are outliers.</p></li>
 <li><p><strong>Data analysis:</strong> In data that has noise or measurement error.</p></li>
 </ul>
+</section>
+</section>
+<section id="mean-in-python" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="mean-in-python"><span class="header-section-number">2.6</span> Mean in Python</h2>
+<section id="arithmetic-mean-in-python" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="arithmetic-mean-in-python"><span class="header-section-number">2.6.1</span> <strong>Arithmetic Mean in Python</strong></h3>
+<p><strong>Method 1:</strong> Using <strong><code>statistics.mean</code></strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>mean_value <span class="op">=</span> statistics.mean(numbers)</span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mean:"</span>, mean_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean: 30</code></pre>
+</div>
+</div>
+<p><strong>Method 2:</strong> Using <strong><code>NumPy</code></strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>mean_value <span class="op">=</span> np.mean(numbers)</span>
+<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mean:"</span>, mean_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean: 30.0</code></pre>
+</div>
+</div>
+<ul>
+<li><p><strong>If the data is small:</strong> use <code>statistics.mean</code></p></li>
+<li><p><strong>If the data is large or a matrix:</strong> use <code>numpy.mean.</code></p></li>
+</ul>
+<p><strong>Method 3:</strong> Using <strong><code>Pandas</code></strong></p>
+<p><strong>Example 1:</strong> Calculating the mean of a column</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Name"</span>:[<span class="st">"Sevda"</span>, <span class="st">"MG"</span>, <span class="st">"Reza"</span>, <span class="st">"RG"</span>],</span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Math"</span>:[<span class="dv">20</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">15</span>],</span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Statistics"</span>: [<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">14</span>]</span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-11"><a href="#cb96-11" aria-hidden="true" tabindex="-1"></a>mean_math <span class="op">=</span> df[<span class="st">"Math"</span>].mean()</span>
+<span id="cb96-12"><a href="#cb96-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-13"><a href="#cb96-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Math:"</span>, mean_math)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Math: 16.25</code></pre>
+</div>
+</div>
+<p><strong>Example 2:</strong> Calculating the mean of all columns</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> df.mean(numeric_only<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Math          16.25
+Statistics    16.50
+dtype: float64</code></pre>
+</div>
+</div>
+<p><strong>Example 3:</strong> Calculating the mean of each row</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Individual Mean"</span>] <span class="op">=</span> df.mean(numeric_only<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Name  Math  Statistics  Individual Mean
+0  Sevda    20          17             18.5
+1     MG    12          16             14.0
+2   Reza    18          19             18.5
+3     RG    15          14             14.5</code></pre>
+</div>
+</div>
+<p><strong>Mean with NaN</strong></p>
+<ol type="1">
+<li><strong>Using Pandas</strong> The Pandas library ignores <code>NaN</code> values ​​by default in its statistical functions.</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Name"</span>:[<span class="st">"Sevda"</span>, <span class="st">"MG"</span>, <span class="st">"Reza"</span>, <span class="st">"RG"</span>],</span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Math"</span>:[<span class="dv">20</span>, <span class="dv">12</span>, np.nan, <span class="dv">15</span>],</span>
+<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Statistics"</span>: [<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">19</span>, np.nan]</span>
+<span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb102-12"><a href="#cb102-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-13"><a href="#cb102-13" aria-hidden="true" tabindex="-1"></a>mean_math <span class="op">=</span> df[<span class="st">"Math"</span>].mean()</span>
+<span id="cb102-14"><a href="#cb102-14" aria-hidden="true" tabindex="-1"></a>mean_Statistics <span class="op">=</span> df[<span class="st">"Statistics"</span>].mean()</span>
+<span id="cb102-15"><a href="#cb102-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-16"><a href="#cb102-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-17"><a href="#cb102-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Math:"</span>, mean_math)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Math: 15.666666666666666</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Statistics:"</span>, mean_Statistics)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Statistics: 17.333333333333332</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> df.mean(numeric_only<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Math          15.666667
+Statistics    17.333333
+dtype: float64</code></pre>
+</div>
+</div>
+<ol type="1">
+<li><strong>Using <code>NumPy</code></strong> with <code>np.nanmean()</code></li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, np.nan, <span class="dv">30</span>, <span class="dv">40</span>]</span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>mean_value <span class="op">=</span> np.nanmean(numbers)</span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Mean:"</span>, mean_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Mean: 25.0</code></pre>
+</div>
+</div>
+<p><strong>Example:</strong> DataFrame (numeric + categorical)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Name"</span>:[<span class="st">"Sevda"</span>, <span class="st">"MG"</span>, <span class="st">"Reza"</span>, <span class="st">"RG"</span>, <span class="st">"SG"</span>],</span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Class"</span>:[<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>, <span class="st">"C"</span>],</span>
+<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Math"</span>:[<span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">15</span>, np.nan, <span class="dv">20</span>],</span>
+<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"physics"</span>: [<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">14</span>, np.nan],</span>
+<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Psychology"</span>: [np.nan, <span class="dv">18</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">19</span>]</span>
+<span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb110-11"><a href="#cb110-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-12"><a href="#cb110-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb110-13"><a href="#cb110-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-14"><a href="#cb110-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Name Class  Math  physics  Psychology
+0  Sevda     A  12.0     17.0         NaN
+1     MG     B  18.0     16.0        18.0
+2   Reza     C  15.0     19.0        13.0
+3     RG     A   NaN     14.0        15.0
+4     SG     C  20.0      NaN        19.0</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Mean of all numeric columns</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> df.mean(numeric_only<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Math          16.25
+physics       16.50
+Psychology    16.25
+dtype: float64</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Mean of each row (for each student)</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Individual Mean"</span>] <span class="op">=</span> df.mean(numeric_only<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Name Class  Math  physics  Psychology  Individual Mean
+0  Sevda     A  12.0     17.0         NaN        14.500000
+1     MG     B  18.0     16.0        18.0        17.333333
+2   Reza     C  15.0     19.0        13.0        15.666667
+3     RG     A   NaN     14.0        15.0        14.500000
+4     SG     C  20.0      NaN        19.0        19.500000</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Calculate the group mean (based on categorical column)</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>group_means <span class="op">=</span> df.groupby(<span class="st">"Class"</span>).mean(numeric_only<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(group_means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Math  physics  Psychology  Individual Mean
+Class                                            
+A      12.0     15.5        15.0        14.500000
+B      18.0     16.0        18.0        17.333333
+C      17.5     19.0        16.0        17.583333</code></pre>
+</div>
+</div>
 
 
 </section>
