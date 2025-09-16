@@ -692,3 +692,5 @@ tm : 18.66
 -   **trim_mean(data, 0.1)** : Remove 10% of the data from the beginning and end
 
 -   **trim_mean(data, 0.2)** : Remove 20% of the data
+
+End
