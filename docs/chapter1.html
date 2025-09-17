@@ -187,6 +187,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#mean-in-python" id="toc-mean-in-python" class="nav-link" data-scroll-target="#mean-in-python"><span class="header-section-number">2.6</span> Mean in Python</a>
   <ul class="collapse">
   <li><a href="#arithmetic-mean-in-python" id="toc-arithmetic-mean-in-python" class="nav-link" data-scroll-target="#arithmetic-mean-in-python"><span class="header-section-number">2.6.1</span> <strong>Arithmetic Mean in Python</strong></a></li>
+  <li><a href="#geometric-mean-in-python" id="toc-geometric-mean-in-python" class="nav-link" data-scroll-target="#geometric-mean-in-python"><span class="header-section-number">2.6.2</span> <strong>Geometric Mean in Python</strong></a></li>
+  <li><a href="#harmonic-mean-in-python" id="toc-harmonic-mean-in-python" class="nav-link" data-scroll-target="#harmonic-mean-in-python"><span class="header-section-number">2.6.3</span> Harmonic Mean <strong>in Python</strong></a></li>
+  <li><a href="#trimmed-mean-in-python" id="toc-trimmed-mean-in-python" class="nav-link" data-scroll-target="#trimmed-mean-in-python"><span class="header-section-number">2.6.4</span> Trimmed Mean in Python</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -952,6 +955,119 @@ Class
 A      12.0     15.5        15.0        14.500000
 B      18.0     16.0        18.0        17.333333
 C      17.5     19.0        16.0        17.583333</code></pre>
+</div>
+</div>
+</section>
+<section id="geometric-mean-in-python" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="geometric-mean-in-python"><span class="header-section-number">2.6.2</span> <strong>Geometric Mean in Python</strong></h3>
+<ol type="1">
+<li>Using <code>statistics.geometric_mean</code> (Python 3.8 and later)</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics</span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">4</span>]</span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>gm <span class="op">=</span> statistics.geometric_mean(numbers)</span>
+<span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-7"><a href="#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"geometric_mean:"</span>, gm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>geometric_mean: 4.0</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Using <strong>SciPy</strong> :<code>scipy.stats.gmean</code></li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> gmean</span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">4</span>]</span>
+<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-5"><a href="#cb120-5" aria-hidden="true" tabindex="-1"></a>gm <span class="op">=</span> gmean(numbers)</span>
+<span id="cb120-6"><a href="#cb120-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-7"><a href="#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"gmean:"</span>, gm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>gmean: 4.0</code></pre>
+</div>
+</div>
+<pre><code>gmean: 4.0</code></pre>
+<p><strong>If a number is zero:</strong> the total geometric mean is zero.</p>
+<ul>
+<li><strong>If a number is negative:</strong> the geometric mean is not defined (except in special cases).</li>
+</ul>
+</section>
+<section id="harmonic-mean-in-python" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="harmonic-mean-in-python"><span class="header-section-number">2.6.3</span> Harmonic Mean <strong>in Python</strong></h3>
+<ol type="1">
+<li><strong>Using</strong> <strong><code>statistics.harmonic_mean</code></strong> (Python 3.6 and later)</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics</span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>]</span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a>hm <span class="op">=</span> statistics.harmonic_mean(numbers)</span>
+<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-7"><a href="#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hm :"</span>, hm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>hm : 3.0</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Using <strong>SciPy</strong> :<code>scipy.stats.hmean</code></li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> hmean</span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>]</span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-5"><a href="#cb125-5" aria-hidden="true" tabindex="-1"></a>hm <span class="op">=</span> hmean(numbers)</span>
+<span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-7"><a href="#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hmean:"</span>, hm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>hmean: 3.0</code></pre>
+</div>
+</div>
+<pre><code>hmean: 3.0</code></pre>
+<ul>
+<li><p>All data must be positive. If a value is zero or negative, the harmonic mean is not defined.</p></li>
+<li><p>The main application is in rates (such as average speed over equal distances).</p></li>
+</ul>
+</section>
+<section id="trimmed-mean-in-python" class="level3" data-number="2.6.4">
+<h3 data-number="2.6.4" class="anchored" data-anchor-id="trimmed-mean-in-python"><span class="header-section-number">2.6.4</span> Trimmed Mean in Python</h3>
+<p>The trimmed mean is the same as the regular mean, except that some of the largest and smallest data (for example, the top 10% and bottom 10%) are removed and then the mean is taken.</p>
+<ol type="1">
+<li>Using <strong>SciPy</strong> (<code>scipy.stats.trim_mean</code>)</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> trim_mean</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">100</span>]</span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>tm <span class="op">=</span> trim_mean(numbers, <span class="fl">0.1</span>)</span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tm :"</span>, tm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tm : 18.666666666666668</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>tm : <span class="fl">18.66</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><p><strong>trim_mean(data, 0.1)</strong> : Remove 10% of the data from the beginning and end</p></li>
+<li><p><strong>trim_mean(data, 0.2)</strong> : Remove 20% of the data</p></li>
+</ul>
+<p>End Reza</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># توی R</span></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(<span class="st">"scipy"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using virtual environment '/cloud/home/r3362352/.cache/R/reticulate/uv/cache/archive-v0/HbRs4934gdUkCIsqeq60g' ...</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>+ /cloud/home/r3362352/.cache/R/reticulate/uv/cache/archive-v0/HbRs4934gdUkCIsqeq60g/bin/python -m pip install --upgrade --no-user scipy</code></pre>
 </div>
 </div>
 

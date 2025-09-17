@@ -693,4 +693,10 @@ tm : 18.66
 
 -   **trim_mean(data, 0.2)** : Remove 20% of the data
 
-End
+End Reza
+
+```{r}
+# توی R
+reticulate::py_install("scipy")
+
+```
