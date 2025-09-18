@@ -626,10 +626,6 @@ gm = gmean(numbers)
 print("gmean:", gm)
 ```
 
-```         
-gmean: 4.0
-```
-
 **If a number is zero:** the total geometric mean is zero.
 
 -   **If a number is negative:** the geometric mean is not defined (except in special cases).
@@ -658,11 +654,6 @@ numbers = [2, 4, 4]
 hm = hmean(numbers)
 
 print("hmean:", hm)
-
-```
-
-```         
-hmean: 3.0
 ```
 
 -   All data must be positive. If a value is zero or negative, the harmonic mean is not defined.
@@ -685,18 +676,8 @@ tm = trim_mean(numbers, 0.1)
 print("tm :", tm)
 ```
 
-```{python}
-tm : 18.66
-```
-
 -   **trim_mean(data, 0.1)** : Remove 10% of the data from the beginning and end
 
 -   **trim_mean(data, 0.2)** : Remove 20% of the data
 
 End Reza
-
-```{r}
-# توی R
-reticulate::py_install("scipy")
-
-```
