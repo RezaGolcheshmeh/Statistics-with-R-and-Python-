@@ -1,3 +1,82 @@
-## chapter2: Measures of variability
+# chapter2: Measures of variability
 
-Drawing graphs
+**Variability is most commonly measured with the following descriptive statistics:**
+
+-   Range: the difference between the highest and lowest values.
+
+-   Interquartile range: the range of the middle half of a distribution.
+
+-   Standard deviation: average distance from the mean.
+
+-   Variance: average of squared distances from the mean.
+
+## Range in R
+
+```{r}
+x <- c(12, 15, 18, 25, 30, 35)
+
+range_value <- max(x) - min(x)
+range_value
+```
+
+**Using range() function**
+
+```{r}
+x <- c(12, 15, 18, 25, 30, 35)
+range(x)
+```
+
+**Using range() function with `NA`**
+
+```{r}
+x <- c(10, 15, NA, 25, 30, NA, 40)
+
+range(x, na.rm = TRUE)
+```
+
+**Range in DataFrame**
+
+```{r}
+df <- data.frame(
+  A = c(10, 15, 20, 25, 30),
+  B = c(5, 7, 9, 12, 15),
+  C = c(100, 120, 110, 130, 125),
+  Gender = c("m", "f", "f", "m", "f")
+)
+
+df
+```
+
+**Using: `sapply` Numeric column**
+
+```{r}
+range_df <- sapply(df[, sapply(df, is.numeric)], function(x) max(x) - min(x))
+range_df
+```
+
+**`aggregate()`** Categorical variables
+
+```{r}
+aggregate(cbind(A, B, C) ~ Gender, data = df,
+          FUN = function(x) max(x) - min(x))
+```
+
+**Range in DataFrame with `NA`**
+
+```{r}
+df <- data.frame(
+  A = c(10, 15, 20, 25, 30),
+  B = c(5, NA, 9, 12, 15),
+  C = c(100, 120, 110, 130, NA),
+  Gender = c("m", "f", "f", "m", "f")
+)
+
+df
+```
+
+In R, to handle missing data we need to put `na.rm = TRUE` inside the function:
+
+```{r}
+aggregate(cbind(A, B, C) ~ Gender, data = df,
+          FUN = function(x) max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
+```
