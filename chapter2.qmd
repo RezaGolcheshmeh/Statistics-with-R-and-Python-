@@ -12,6 +12,8 @@
 
 ## Range in R
 
+To calculate the range, simply subtract the largest data value from the smallest value.
+
 ```{r}
 x <- c(12, 15, 18, 25, 30, 35)
 
@@ -79,4 +81,67 @@ In R, to handle missing data we need to put `na.rm = TRUE` inside the function:
 ```{r}
 aggregate(cbind(A, B, C) ~ Gender, data = df,
           FUN = function(x) max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
+```
+
+## Range in Python
+
+```{python}
+data = [12, 15, 18, 25, 30, 35]
+
+range_value = max(data) - min(data)
+print(range_value)
+```
+
+**Range with missing data (`NA`) in Python**
+
+```{python}
+import pandas as pd
+
+data = [10, 15, None, 25, 30, None, 40]
+s = pd.Series(data)
+
+range_value = s.max() - s.min()
+
+print(range_value)
+```
+
+**Range with DataFrame (**Numeric columns**)**
+
+```{python}
+import pandas as pd
+
+data = {
+    "A": [10, 15, 20, 25, 30],
+    "B": [5, 7, 9, 12, 15],
+    "C": [100, 120, 110, 130, 140]
+}
+df = pd.DataFrame(data)
+
+range_values = df.max() - df.min()
+print(range_values)
+```
+
+Only for one column
+
+```{python}
+range_A = df["A"].max() - df["A"].min()
+print(range_A)
+```
+
+**Range with DataFrame (**Numeric + Categorical**)**
+
+```{python}
+import pandas as pd
+
+data = {
+    "A": [10, 15, 20, 25, 30],
+    "B": [5, 7, 9, 12, 15],
+    "C": [100, 120, 110, 130, 140],
+    "Gender": ["Male", "Female", "Male", "Female", "Male"]
+}
+df = pd.DataFrame(data)
+
+range_values = df.select_dtypes(include="number").max() - df.select_dtypes(include="number").min()
+
+print(range_values)
 ```
