@@ -174,6 +174,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#range-in-r" id="toc-range-in-r" class="nav-link active" data-scroll-target="#range-in-r"><span class="header-section-number">3.1</span> Range in R</a></li>
   <li><a href="#range-in-python" id="toc-range-in-python" class="nav-link" data-scroll-target="#range-in-python"><span class="header-section-number">3.2</span> Range in Python</a></li>
+  <li><a href="#deciles-percentiles-and-quartiles-in-r" id="toc-deciles-percentiles-and-quartiles-in-r" class="nav-link" data-scroll-target="#deciles-percentiles-and-quartiles-in-r"><span class="header-section-number">3.3</span> <strong>Deciles, Percentiles, and Quartiles in R</strong></a>
+  <ul class="collapse">
+  <li><a href="#deciles-in-r" id="toc-deciles-in-r" class="nav-link" data-scroll-target="#deciles-in-r"><span class="header-section-number">3.3.1</span> <strong>1.Deciles in R</strong></a></li>
+  <li><a href="#percentiles-in-r" id="toc-percentiles-in-r" class="nav-link" data-scroll-target="#percentiles-in-r"><span class="header-section-number">3.3.2</span> 2. <strong>Percentiles in R</strong></a></li>
+  <li><a href="#quartiles-in-r" id="toc-quartiles-in-r" class="nav-link" data-scroll-target="#quartiles-in-r"><span class="header-section-number">3.3.3</span> 3. <strong>Quartiles in R</strong></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -378,8 +384,207 @@ C    40
 dtype: int64</code></pre>
 </div>
 </div>
+</section>
+<section id="deciles-percentiles-and-quartiles-in-r" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="deciles-percentiles-and-quartiles-in-r"><span class="header-section-number">3.3</span> <strong>Deciles, Percentiles, and Quartiles in R</strong></h2>
+<section id="deciles-in-r" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="deciles-in-r"><span class="header-section-number">3.3.1</span> <strong>1.Deciles in R</strong></h3>
+<p>Deciles divide the data into 10 equal groups (each 10%).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(data, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>,<span class="at">by =</span> <span class="fl">0.1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% 
+ 5.0  7.2  9.6 12.9 16.2 20.0 23.8 28.5 34.0 39.5 50.0 </code></pre>
+</div>
+</div>
+</section>
+<section id="percentiles-in-r" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="percentiles-in-r"><span class="header-section-number">3.3.2</span> 2. <strong>Percentiles in R</strong></h3>
+<p>To calculate any percentile, use the same function with a decimal value.</p>
+<p><strong>For exampl</strong>e, the 25th percentile and the 90th percentile:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(data, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.9</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  25%   90% 
+11.25 39.50 </code></pre>
+</div>
+</div>
+<p>Or all percentiles (as a complete vector):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(data, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.01</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   0%    1%    2%    3%    4%    5%    6%    7%    8%    9%   10%   11%   12% 
+ 5.00  5.22  5.44  5.66  5.88  6.10  6.32  6.54  6.76  6.98  7.20  7.42  7.64 
+  13%   14%   15%   16%   17%   18%   19%   20%   21%   22%   23%   24%   25% 
+ 7.86  8.08  8.30  8.52  8.74  8.96  9.27  9.60  9.93 10.26 10.59 10.92 11.25 
+  26%   27%   28%   29%   30%   31%   32%   33%   34%   35%   36%   37%   38% 
+11.58 11.91 12.24 12.57 12.90 13.23 13.56 13.89 14.22 14.55 14.88 15.21 15.54 
+  39%   40%   41%   42%   43%   44%   45%   46%   47%   48%   49%   50%   51% 
+15.87 16.20 16.53 16.86 17.19 17.52 17.85 18.24 18.68 19.12 19.56 20.00 20.44 
+  52%   53%   54%   55%   56%   57%   58%   59%   60%   61%   62%   63%   64% 
+20.88 21.32 21.76 22.15 22.48 22.81 23.14 23.47 23.80 24.13 24.46 24.79 25.20 
+  65%   66%   67%   68%   69%   70%   71%   72%   73%   74%   75%   76%   77% 
+25.75 26.30 26.85 27.40 27.95 28.50 29.05 29.60 30.15 30.70 31.25 31.80 32.35 
+  78%   79%   80%   81%   82%   83%   84%   85%   86%   87%   88%   89%   90% 
+32.90 33.45 34.00 34.55 35.10 35.65 36.20 36.75 37.30 37.85 38.40 38.95 39.50 
+  91%   92%   93%   94%   95%   96%   97%   98%   99%  100% 
+40.10 41.20 42.30 43.40 44.50 45.60 46.70 47.80 48.90 50.00 </code></pre>
+</div>
+</div>
+</section>
+<section id="quartiles-in-r" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="quartiles-in-r"><span class="header-section-number">3.3.3</span> 3. <strong>Quartiles in R</strong></h3>
+<p>You can use the <code>quantile()</code> function to compute quartiles.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   0%   25%   50%   75%  100% 
+ 5.00 11.25 20.00 31.25 50.00 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(data, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  25%   50%   75% 
+11.25 20.00 31.25 </code></pre>
+</div>
+</div>
+<p><strong>Quartiles with <code>NA</code></strong></p>
+<p><code>na.rm = TRUE</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="cn">NA</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="cn">NA</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(data, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  25%   50%   75% 
+12.75 20.00 33.75 </code></pre>
+</div>
+</div>
+<p>If you want, without removing <code>NA</code> but replacing it with the <code>mean</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="cn">NA</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="cn">NA</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>data_filled <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(data), <span class="fu">mean</span>(data, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), data)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(data_filled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   0%   25%   50%   75%  100% 
+ 5.00 14.25 22.70 31.25 50.00 </code></pre>
+</div>
+</div>
+<p><strong>DataFrame with <code>NA</code></strong></p>
+<p>Calculating quartiles for each column</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">165</span>, <span class="dv">170</span>, <span class="cn">NA</span>, <span class="dv">180</span>, <span class="dv">190</span>, <span class="cn">NA</span>),</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">55</span>, <span class="cn">NA</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">95</span>),</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">age    =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="cn">NA</span>, <span class="dv">45</span>, <span class="dv">50</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, <span class="cf">function</span>(x) <span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    height weight   age
+25%    165  58.75 26.25
+50%    170  75.00 32.50
+75%    180  87.50 42.50</code></pre>
+</div>
+</div>
+<p><strong>for a column</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(df<span class="sc">$</span>weight, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  25%   50%   75% 
+58.75 75.00 87.50 </code></pre>
+</div>
+</div>
+<p><strong>DataFrame with Categorical variable</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">165</span>, <span class="dv">170</span>, <span class="cn">NA</span>, <span class="dv">180</span>, <span class="dv">190</span>, <span class="cn">NA</span>),</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">55</span>, <span class="cn">NA</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">95</span>),</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">age    =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="cn">NA</span>, <span class="dv">45</span>, <span class="dv">50</span>),</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Gender =</span> <span class="fu">c</span>(<span class="st">'Male'</span>, <span class="st">'Female'</span>, <span class="st">'Male'</span>, <span class="st">'Female'</span>, <span class="st">'Male'</span>, <span class="st">'Female'</span>, <span class="st">'Male'</span>)</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(df<span class="sc">$</span>height, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25% 50% 75% 
+165 170 180 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(df<span class="sc">$</span>weight, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  25%   50%   75% 
+58.75 75.00 87.50 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(df<span class="sc">$</span>age,    <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  25%   50%   75% 
+26.25 32.50 42.50 </code></pre>
+</div>
+</div>
+<p><strong>with <code>dplyr</code></strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">height_Q1 =</span> <span class="fu">quantile</span>(height, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">height_Median =</span> <span class="fu">quantile</span>(height, <span class="fl">0.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">height_Q3 =</span> <span class="fu">quantile</span>(height, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight_Q1 =</span> <span class="fu">quantile</span>(weight, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight_Median =</span> <span class="fu">quantile</span>(weight, <span class="fl">0.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight_Q3 =</span> <span class="fu">quantile</span>(weight, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_Q1 =</span> <span class="fu">quantile</span>(age, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_Median =</span> <span class="fu">quantile</span>(age, <span class="fl">0.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_Q3 =</span> <span class="fu">quantile</span>(age, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 10
+  Gender height_Q1 height_Median height_Q3 weight_Q1 weight_Median weight_Q3
+  &lt;chr&gt;      &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+1 Female      171.          178.      184.      62.5            70      80  
+2 Male        165           170       175       65              80      87.5
+# ℹ 3 more variables: age_Q1 &lt;dbl&gt;, age_Median &lt;dbl&gt;, age_Q3 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p><strong>with <code>tapply</code></strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">165</span>, <span class="dv">170</span>, <span class="cn">NA</span>, <span class="dv">180</span>, <span class="dv">190</span>, <span class="cn">NA</span>),</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">55</span>, <span class="cn">NA</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">95</span>),</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">age    =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="cn">NA</span>, <span class="dv">45</span>, <span class="dv">50</span>),</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Gender =</span> <span class="fu">c</span>(<span class="st">'Male'</span>, <span class="st">'Female'</span>, <span class="st">'Male'</span>, <span class="st">'Female'</span>, <span class="st">'Male'</span>, <span class="st">'Female'</span>, <span class="st">'Male'</span>)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(df<span class="sc">$</span>height, df<span class="sc">$</span>Gender, <span class="cf">function</span>(x) <span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$Female
+   25%    50%    75% 
+171.25 177.50 183.75 
+
+$Male
+25% 50% 75% 
+165 170 175 </code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

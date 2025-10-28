@@ -145,3 +145,134 @@ range_values = df.select_dtypes(include="number").max() - df.select_dtypes(inclu
 
 print(range_values)
 ```
+
+## **Deciles, Percentiles, and Quartiles in R**
+
+### **1.Deciles in R**
+
+Deciles divide the data into 10 equal groups (each 10%).
+
+```{r}
+data <- c(12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50)
+quantile(data, probs = seq(0, 1,by = 0.1))
+```
+
+### 2. **Percentiles in R**
+
+To calculate any percentile, use the same function with a decimal value.
+
+**For exampl**e, the 25th percentile and the 90th percentile:
+
+```{r}
+data <- c(12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50)
+quantile(data, probs = c(0.25, 0.9))
+
+```
+
+Or all percentiles (as a complete vector):
+
+```{r}
+data <- c(12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50)
+quantile(data, probs = seq(0, 1, 0.01))
+```
+
+### 3. **Quartiles in R**
+
+You can use the `quantile()` function to compute quartiles.
+
+```{r}
+data <- c(12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50)
+quantile(data)
+
+quantile(data, probs = c(0.25, 0.5, 0.75))
+```
+
+**Quartiles with `NA`**
+
+`na.rm = TRUE`
+
+```{r}
+data <- c(12, 5, 7, NA, 15, 18, 22, NA, 30, 35, 40, 50)
+quantile(data, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+```
+
+If you want, without removing `NA` but replacing it with the `mean`.
+
+```{r}
+data <- c(12, 5, 7, NA, 15, 18, 22, NA, 30, 35, 40, 50)
+data_filled <- ifelse(is.na(data), mean(data, na.rm = TRUE), data)
+quantile(data_filled)
+```
+
+**DataFrame with `NA`**
+
+Calculating quartiles for each column
+
+```{r}
+df <- data.frame(
+  height = c(160, 165, 170, NA, 180, 190, NA),
+  weight = c(50, 55, NA, 70, 80, 90, 95),
+  age    = c(20, 25, 30, 35, NA, 45, 50)
+)
+
+sapply(df, function(x) quantile(x, probs = c(0.25, 0.5, 0.75), na.rm = TRUE))
+```
+
+**for a column**
+
+```{r}
+quantile(df$weight, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+```
+
+**DataFrame with Categorical variable**
+
+```{r}
+df <- data.frame(
+  height = c(160, 165, 170, NA, 180, 190, NA),
+  weight = c(50, 55, NA, 70, 80, 90, 95),
+  age    = c(20, 25, 30, 35, NA, 45, 50),
+  Gender = c('Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male')
+)
+
+quantile(df$height, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+quantile(df$weight, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+quantile(df$age,    probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+
+```
+
+**with `dplyr`**
+
+```{r}
+library(dplyr)
+
+df %>%
+  group_by(Gender) %>%
+  summarise(
+    height_Q1 = quantile(height, 0.25, na.rm = TRUE),
+    height_Median = quantile(height, 0.5, na.rm = TRUE),
+    height_Q3 = quantile(height, 0.75, na.rm = TRUE),
+    
+    weight_Q1 = quantile(weight, 0.25, na.rm = TRUE),
+    weight_Median = quantile(weight, 0.5, na.rm = TRUE),
+    weight_Q3 = quantile(weight, 0.75, na.rm = TRUE),
+    
+    age_Q1 = quantile(age, 0.25, na.rm = TRUE),
+    age_Median = quantile(age, 0.5, na.rm = TRUE),
+    age_Q3 = quantile(age, 0.75, na.rm = TRUE)
+  )
+
+```
+
+**with `tapply`**
+
+```{r}
+df <- data.frame(
+  height = c(160, 165, 170, NA, 180, 190, NA),
+  weight = c(50, 55, NA, 70, 80, 90, 95),
+  age    = c(20, 25, 30, 35, NA, 45, 50),
+  Gender = c('Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male')
+)
+
+tapply(df$height, df$Gender, function(x) quantile(x, probs = c(0.25,0.5,0.75), na.rm = TRUE))
+
+```
