@@ -279,7 +279,7 @@ tapply(df$height, df$Gender, function(x) quantile(x, probs = c(0.25,0.5,0.75), n
 
 ```
 
-## Interquartile Range in R - IQR() Function
+## Interquartile Range in R - IQR()
 
 the interquartile range is the difference between the upper quartile and the lower quartile.
 
@@ -334,7 +334,7 @@ Just for weight
 IQR(df$weight, na.rm = TRUE)
 ```
 
-**DataFrame (Numeric + Categorical) variable**
+**DataFrame (Numerical + Categorical) variable**
 
 ```{r}
 df <- data.frame(
@@ -366,3 +366,134 @@ df %>%
     IQR_age    = IQR(age, na.rm = TRUE)
   )
 ```
+
+## Percentiles and **Quartiles in Python**
+
+### Percentiles in Python
+
+**Percentiles are a type of quantiles**, obtained by a subdivision into 100 groups.
+
+**NumPy : `numpy.percentile()`**
+
+```{python}
+import numpy as np
+
+data1 = [12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50]
+percentiles = np.percentile(data1, [25, 50, 75])
+
+print(percentiles)
+```
+
+Data with `Nan`(Missing Data)
+
+```{python}
+import numpy as np
+
+data2 = [12, 5, 7, np.nan, 15, 18, 22, 25, 30, np.nan, 40, 50]
+percentiles = np.nanpercentile(data2, [25, 50, 75])
+
+print(percentiles)
+```
+
+**DataFrame (Numerical)**
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({
+    'Height': [174, 180, 165, 190],
+    'Weight': [80, 85, 70, 95]
+})
+
+print(df.quantile([0.25, 0.5, 0.75]))
+```
+
+**DataFrame (Categorical + Numerical)**
+
+Calculate percentiles for all data.
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({
+    'Height': [174, 180, 165, 190],
+    'Weight': [80, 85, 70, 95],
+    'Gender': ['Male', 'Male', 'Female', 'Male']
+})
+
+# Calculate percentiles for numeric columns
+percentile_values = df[['Height', 'Weight']].quantile([0.1, 0.25, 0.5, 0.75, 0.9])
+
+print(percentile_values)
+```
+
+Calculate percentiles grouped by Gender.
+
+```{python}
+import pandas as pd
+
+# Create DataFrame
+df = pd.DataFrame({
+    'Height': [174, 180, 165, 190],
+    'Weight': [80, 85, 70, 95],
+    'Gender': ['Male', 'Male', 'Female', 'Male']
+})
+
+# Group by Gender and calculate percentiles
+percentiles = df.groupby('Gender')[['Height', 'Weight']].quantile([0.25, 0.5, 0.75])
+
+print(percentiles)
+```
+
+### **Quartiles in Python**
+
+In statistics, quartiles are a type of quantiles which **divide the number of data points into four parts.**
+
+**NumPy (`quantile`)**
+
+```{python}
+import numpy as np
+
+data = [12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50]
+
+median = np.quantile(data, 0.5)
+print("Median:", median)
+```
+
+**Other Quartiles**
+
+```{python}
+data4 = [12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50]
+
+quartiles = np.quantile(data4, [0.25, 0.5, 0.75])
+print(quartiles)
+
+
+# یا به صورت جداگانه
+q1 = np.quantile(data4, 0.25)
+q2 = np.quantile(data4, 0.5)
+q3 = np.quantile(data4, 0.75)
+```
+
+**NumPy (`percentile`)**
+
+```{python}
+import numpy as np
+data2 = [12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50]
+
+median2 = np.percentile(data2, 50)
+print("Median2:", median2)
+```
+
+**Pandas**
+
+```{python}
+import pandas as pd
+data3 = [12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50]
+data_series = pd.Series(data3)
+median3 = data_series.quantile(0.5)
+
+print("Median3:", median3)
+```
+
+**other Quartiles**

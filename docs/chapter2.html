@@ -180,7 +180,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#percentiles-in-r" id="toc-percentiles-in-r" class="nav-link" data-scroll-target="#percentiles-in-r"><span class="header-section-number">3.3.2</span> 2. <strong>Percentiles in R</strong></a></li>
   <li><a href="#quartiles-in-r" id="toc-quartiles-in-r" class="nav-link" data-scroll-target="#quartiles-in-r"><span class="header-section-number">3.3.3</span> 3. <strong>Quartiles in R</strong></a></li>
   </ul></li>
-  <li><a href="#interquartile-range-in-r---iqr-function" id="toc-interquartile-range-in-r---iqr-function" class="nav-link" data-scroll-target="#interquartile-range-in-r---iqr-function"><span class="header-section-number">3.4</span> Interquartile Range in R - IQR() Function</a></li>
+  <li><a href="#interquartile-range-in-r---iqr" id="toc-interquartile-range-in-r---iqr" class="nav-link" data-scroll-target="#interquartile-range-in-r---iqr"><span class="header-section-number">3.4</span> Interquartile Range in R - IQR()</a></li>
+  <li><a href="#percentiles-and-quartiles-in-python" id="toc-percentiles-and-quartiles-in-python" class="nav-link" data-scroll-target="#percentiles-and-quartiles-in-python"><span class="header-section-number">3.5</span> Percentiles and <strong>Quartiles in Python</strong></a>
+  <ul class="collapse">
+  <li><a href="#percentiles-in-python" id="toc-percentiles-in-python" class="nav-link" data-scroll-target="#percentiles-in-python"><span class="header-section-number">3.5.1</span> Percentiles in Python</a></li>
+  <li><a href="#quartiles-in-python" id="toc-quartiles-in-python" class="nav-link" data-scroll-target="#quartiles-in-python"><span class="header-section-number">3.5.2</span> <strong>Quartiles in Python</strong></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -586,8 +591,8 @@ $Male
 </div>
 </section>
 </section>
-<section id="interquartile-range-in-r---iqr-function" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="interquartile-range-in-r---iqr-function"><span class="header-section-number">3.4</span> Interquartile Range in R - IQR() Function</h2>
+<section id="interquartile-range-in-r---iqr" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="interquartile-range-in-r---iqr"><span class="header-section-number">3.4</span> Interquartile Range in R - IQR()</h2>
 <p>the interquartile range is&nbsp;the difference between the upper quartile and the lower quartile.</p>
 <pre><code>IQR=Q3−Q1</code></pre>
 <p><strong><code>IQR()</code></strong> <strong>Function</strong></p>
@@ -644,7 +649,7 @@ $Male
 <pre><code>[1] 28.75</code></pre>
 </div>
 </div>
-<p><strong>DataFrame (Numeric + Categorical) variable</strong></p>
+<p><strong>DataFrame (Numerical + Categorical) variable</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>),</span>
@@ -700,8 +705,162 @@ df$gender: Male
 2 Male         10         22.5      15</code></pre>
 </div>
 </div>
+</section>
+<section id="percentiles-and-quartiles-in-python" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="percentiles-and-quartiles-in-python"><span class="header-section-number">3.5</span> Percentiles and <strong>Quartiles in Python</strong></h2>
+<section id="percentiles-in-python" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="percentiles-in-python"><span class="header-section-number">3.5.1</span> Percentiles in Python</h3>
+<p><strong>Percentiles are a type of quantiles</strong>, obtained by a subdivision into 100 groups.</p>
+<p><strong>NumPy : <code>numpy.percentile()</code></strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>percentiles <span class="op">=</span> np.percentile(data1, [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>])</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(percentiles)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[11.25 20.   31.25]</code></pre>
+</div>
+</div>
+<p>Data with <code>Nan</code>(Missing Data)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>data2 <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, np.nan, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, np.nan, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>percentiles <span class="op">=</span> np.nanpercentile(data2, [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>])</span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(percentiles)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[12.75 20.   28.75]</code></pre>
+</div>
+</div>
+<p><strong>DataFrame (Numerical)</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Height'</span>: [<span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">165</span>, <span class="dv">190</span>],</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Weight'</span>: [<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">70</span>, <span class="dv">95</span>]</span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.quantile([<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Height  Weight
+0.25  171.75    77.5
+0.50  177.00    82.5
+0.75  182.50    87.5</code></pre>
+</div>
+</div>
+<p><strong>DataFrame (Categorical + Numerical)</strong></p>
+<p>Calculate percentiles for all data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Height'</span>: [<span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">165</span>, <span class="dv">190</span>],</span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Weight'</span>: [<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">70</span>, <span class="dv">95</span>],</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Gender'</span>: [<span class="st">'Male'</span>, <span class="st">'Male'</span>, <span class="st">'Female'</span>, <span class="st">'Male'</span>]</span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate percentiles for numeric columns</span></span>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>percentile_values <span class="op">=</span> df[[<span class="st">'Height'</span>, <span class="st">'Weight'</span>]].quantile([<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>])</span>
+<span id="cb84-11"><a href="#cb84-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-12"><a href="#cb84-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(percentile_values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Height  Weight
+0.10  167.70    73.0
+0.25  171.75    77.5
+0.50  177.00    82.5
+0.75  182.50    87.5
+0.90  187.00    92.0</code></pre>
+</div>
+</div>
+<p>Calculate percentiles grouped by Gender.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DataFrame</span></span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Height'</span>: [<span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">165</span>, <span class="dv">190</span>],</span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Weight'</span>: [<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">70</span>, <span class="dv">95</span>],</span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Gender'</span>: [<span class="st">'Male'</span>, <span class="st">'Male'</span>, <span class="st">'Female'</span>, <span class="st">'Male'</span>]</span>
+<span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb86-9"><a href="#cb86-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-10"><a href="#cb86-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by Gender and calculate percentiles</span></span>
+<span id="cb86-11"><a href="#cb86-11" aria-hidden="true" tabindex="-1"></a>percentiles <span class="op">=</span> df.groupby(<span class="st">'Gender'</span>)[[<span class="st">'Height'</span>, <span class="st">'Weight'</span>]].quantile([<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>])</span>
+<span id="cb86-12"><a href="#cb86-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-13"><a href="#cb86-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(percentiles)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Height  Weight
+Gender                     
+Female 0.25   165.0    70.0
+       0.50   165.0    70.0
+       0.75   165.0    70.0
+Male   0.25   177.0    82.5
+       0.50   180.0    85.0
+       0.75   185.0    90.0</code></pre>
+</div>
+</div>
+</section>
+<section id="quartiles-in-python" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="quartiles-in-python"><span class="header-section-number">3.5.2</span> <strong>Quartiles in Python</strong></h3>
+<p>In statistics, quartiles are a type of quantiles which&nbsp;<strong>divide the number of data points into four parts.</strong></p>
+<p><strong>NumPy (<code>quantile</code>)</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>median <span class="op">=</span> np.quantile(data, <span class="fl">0.5</span>)</span>
+<span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Median:"</span>, median)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Median: 20.0</code></pre>
+</div>
+</div>
+<p><strong>Other Quartiles</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>data4 <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>quartiles <span class="op">=</span> np.quantile(data4, [<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>])</span>
+<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quartiles)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[11.25 20.   31.25]</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="co"># یا به صورت جداگانه</span></span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> np.quantile(data4, <span class="fl">0.25</span>)</span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a>q2 <span class="op">=</span> np.quantile(data4, <span class="fl">0.5</span>)</span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>q3 <span class="op">=</span> np.quantile(data4, <span class="fl">0.75</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>NumPy (<code>percentile</code>)</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>median2 <span class="op">=</span> np.percentile(data2, <span class="dv">50</span>)</span>
+<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Median2:"</span>, median2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Median2: 20.0</code></pre>
+</div>
+</div>
+<p><strong>Pandas</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>data3 <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>data_series <span class="op">=</span> pd.Series(data3)</span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>median3 <span class="op">=</span> data_series.quantile(<span class="fl">0.5</span>)</span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Median3:"</span>, median3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Median3: 20.0</code></pre>
+</div>
+</div>
+<p><strong>other Quartiles</strong></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
