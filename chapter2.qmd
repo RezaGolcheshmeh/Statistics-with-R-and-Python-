@@ -279,7 +279,7 @@ tapply(df$height, df$Gender, function(x) quantile(x, probs = c(0.25,0.5,0.75), n
 
 ```
 
-## Interquartile Range in R - IQR()
+## Interquartile Range in R - IQR
 
 the interquartile range is the difference between the upper quartile and the lower quartile.
 
@@ -469,7 +469,6 @@ quartiles = np.quantile(data4, [0.25, 0.5, 0.75])
 print(quartiles)
 
 
-# یا به صورت جداگانه
 q1 = np.quantile(data4, 0.25)
 q2 = np.quantile(data4, 0.5)
 q3 = np.quantile(data4, 0.75)
@@ -496,4 +495,112 @@ median3 = data_series.quantile(0.5)
 print("Median3:", median3)
 ```
 
-**other Quartiles**
+## **Interquartile range in Python - IQR**
+
+**NumPY: `quantile`**
+
+```{python}
+import numpy as np
+
+data = [12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50]
+
+q1 = np.quantile(data, 0.25)
+q3 = np.quantile(data, 0.75)  
+
+iqr = q3 - q1
+print("IQR:" , iqr)
+```
+
+**pandas**
+
+```{python}
+import pandas as pd
+import numpy as np
+
+data = [12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50]
+df = pd.DataFrame({'values': data})
+
+q1 = df['values'].quantile(0.25)
+q3 = df['values'].quantile(0.75)
+
+iqr = q3 - q1
+print("IQR:" , iqr)
+```
+
+**`scipy.stats`**
+
+```{python}
+from scipy import stats
+
+data = [12, 5, 7, 9, 15, 18, 22, 25, 30, 35, 40, 50]
+iqr = stats.iqr(data)
+
+print("IQR:" , iqr)
+```
+
+**DataFrame**
+
+```{python}
+import pandas as pd
+from scipy.stats import iqr
+
+df = pd.DataFrame({
+    'Gender': ['Male', 'Female', 'Male', 'Female', 'Male'],
+    'Score1': [85, 90, 78, 92, 88],
+    'Score2': [80, 95, 70, 89, 85]
+})
+
+iqr_overall = df[['Score1','Score2']].agg(iqr)
+
+print(iqr_overall)
+```
+
+##  Mean absolute deviation in R
+
+**What is Mean Absolute Deviation?**
+
+It is the **average of the absolute differences** between each value and the **mean** of the data.
+
+So the steps are:
+
+1.  Compute the mean of the data.
+
+2.  Subtract the mean from each value (deviation).
+
+3.  Take the absolute value of each deviation.
+
+4.  Take the mean of those absolute values.
+
+5.  The `lsr` package does all of this for you with one simple function: **`aad()`**.
+
+```{r}
+install.packages("lsr")
+library(lsr)
+
+scores <- c(10, 12, 13, 15, 18)
+aad(scores)
+```
+
+This will:
+
+-   compute the mean of `scores`,
+
+-   compute the absolute deviations from that mean,
+
+-   return the **average** of those absolute deviations.
+
+-   So `aad(scores)` is equivalent to:
+
+```{r}
+mean(abs(scores - mean(scores)))
+```
+
+**Comparing with the base R `mad()` function**
+
+Be careful: base R already has a function named `mad()`:
+
+But:
+
+-   `mad()` = **Median Absolute Deviation** (based on the **median** and usually scaled)
+
+-   `aad()` (from `lsr`) = **Average Absolute Deviation** (typically from the **mean**, unless you specify a different center).
