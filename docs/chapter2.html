@@ -973,6 +973,55 @@ dtype: float64</code></pre>
 <li><p><code>mad()</code> = <strong>Median Absolute Deviation</strong> (based on the <strong>median</strong> and usually scaled)</p></li>
 <li><p><code>aad()</code> (from <code>lsr</code>) = <strong>Average Absolute Deviation</strong> (typically from the <strong>mean</strong>, unless you specify a different center).</p></li>
 </ul>
+<p><strong>Working with data with missing values:</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="cn">NA</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">28</span>, <span class="cn">NA</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">45</span>)</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">aad</span>(data, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.25</code></pre>
+</div>
+</div>
+<p><strong>DataFrame</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">28</span>, <span class="dv">32</span>, <span class="dv">38</span>, <span class="dv">42</span>, <span class="dv">50</span>,</span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>          <span class="dv">22</span>, <span class="dv">27</span>, <span class="dv">33</span>, <span class="dv">36</span>, <span class="dv">44</span>, <span class="dv">29</span>, <span class="dv">31</span>, <span class="dv">39</span>, <span class="dv">41</span>, <span class="dv">47</span>),</span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">salary =</span> <span class="fu">c</span>(<span class="dv">30000</span>, <span class="dv">35000</span>, <span class="dv">42000</span>, <span class="dv">50000</span>, <span class="dv">58000</span>, </span>
+<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a>             <span class="dv">32000</span>, <span class="dv">38000</span>, <span class="dv">45000</span>, <span class="dv">52000</span>, <span class="dv">60000</span>,</span>
+<span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a>             <span class="dv">28000</span>, <span class="dv">33000</span>, <span class="dv">40000</span>, <span class="dv">47000</span>, <span class="dv">55000</span>,</span>
+<span id="cb113-7"><a href="#cb113-7" aria-hidden="true" tabindex="-1"></a>             <span class="dv">31000</span>, <span class="dv">37000</span>, <span class="dv">44000</span>, <span class="dv">51000</span>, <span class="dv">59000</span>),</span>
+<span id="cb113-8"><a href="#cb113-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Gender =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>,</span>
+<span id="cb113-9"><a href="#cb113-9" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>,</span>
+<span id="cb113-10"><a href="#cb113-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>,</span>
+<span id="cb113-11"><a href="#cb113-11" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>)</span>
+<span id="cb113-12"><a href="#cb113-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Numerical column</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aad</span>(df<span class="sc">$</span>age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aad</span>(df<span class="sc">$</span>salary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8750</code></pre>
+</div>
+</div>
+<p><strong>MAD by Gender</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>Gender, aad)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Female   Male 
+   6.4    6.4 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(df<span class="sc">$</span>salary, df<span class="sc">$</span>Gender, aad)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Female   Male 
+  8680   8720 </code></pre>
+</div>
+</div>
 
 
 </section>

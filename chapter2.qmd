@@ -555,7 +555,7 @@ iqr_overall = df[['Score1','Score2']].agg(iqr)
 print(iqr_overall)
 ```
 
-##  Mean absolute deviation in R
+## Mean absolute deviation in R
 
 **What is Mean Absolute Deviation?**
 
@@ -604,3 +604,66 @@ But:
 -   `mad()` = **Median Absolute Deviation** (based on the **median** and usually scaled)
 
 -   `aad()` (from `lsr`) = **Average Absolute Deviation** (typically from the **mean**, unless you specify a different center).
+
+**Working with data with missing values:**
+
+```{r}
+library(lsr)
+
+data <- c(12, 15, NA, 22, 25, 28, NA, 35, 40, 45)
+aad(data, na.rm = TRUE)
+```
+
+**DataFrame**
+
+```{r}
+df <- data.frame(
+  age = c(25, 30, 35, 40, 45, 28, 32, 38, 42, 50,
+          22, 27, 33, 36, 44, 29, 31, 39, 41, 47),
+  salary = c(30000, 35000, 42000, 50000, 58000, 
+             32000, 38000, 45000, 52000, 60000,
+             28000, 33000, 40000, 47000, 55000,
+             31000, 37000, 44000, 51000, 59000),
+  Gender = c("Male", "Female", "Male", "Female", "Male",
+             "Female", "Male", "Female", "Male", "Female",
+             "Male", "Female", "Male", "Female", "Male",
+             "Female", "Male", "Female", "Male", "Female")
+)
+```
+
+**Numerical column**
+
+```{r}
+aad(df$age)
+
+aad(df$salary)
+```
+
+**MAD by Gender**
+
+```{r}
+tapply(df$age, df$Gender, aad)
+tapply(df$salary, df$Gender, aad)
+```
+
+## **Mean Absolute Deviation (MAD) in Python**
+
+**Calculating MAD with pandas Series**
+
+```{python}
+import pandas as pd
+
+data = pd.Series([56, 31, 56, 8, 32])
+mad = (data - data.mean()).abs().mean()
+print(mad)
+```
+
+**MAD with `statsmodels`**
+
+```{python}
+from statsmodels import robust
+
+data = [56, 31, 56, 8, 32]
+mad = robust.meanabs(data)
+print(mad)
+```
