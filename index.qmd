@@ -1,5 +1,5 @@
 ---
-title: "Statistics with R and Python"
+title: "Statistics with R"
 author: "Reza Golcheshmeh"
 date: today
 format: html
@@ -7,7 +7,7 @@ format: html
 
 **Introduction**
 
-This book is designed for **psychology students** to become familiar with statistical concepts in the `R` and `Python` programming languages.
+This book is designed for **psychology students** to become familiar with statistical concepts in the `R` programming languages.
 
 ## Descriptive statistics
 
